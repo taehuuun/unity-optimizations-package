@@ -128,13 +128,13 @@ namespace CrazyGames.WindowComponents.ModelOptimizations
                     GUI.Label(cellRect, item.data.ModelName);
                     break;
                 case 1:
-                    GUI.Label(cellRect, item.data.IsReadWriteEnabled ? "yes" : "no");
+                    GUI.Label(cellRect, item.data.IsReadWriteEnabled ? "O" : "X");
                     break;
                 case 2:
-                    GUI.Label(cellRect, item.data.ArePolygonsOptimized ? "yes" : "no");
+                    GUI.Label(cellRect, item.data.ArePolygonsOptimized ? "O" : "X");
                     break;
                 case 3:
-                    GUI.Label(cellRect, item.data.AreVerticesOptimized ? "yes" : "no");
+                    GUI.Label(cellRect, item.data.AreVerticesOptimized ? "O" : "X");
                     break;
                 case 4:
                     GUI.Label(cellRect, item.data.MeshCompressionName);
