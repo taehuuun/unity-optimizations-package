@@ -14,37 +14,37 @@ namespace CrazyGames.WindowComponents
             {
                 var compressionOk = PlayerSettings.WebGL.compressionFormat == WebGLCompressionFormat.Brotli;
                 Action fixCompression = () => { PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Brotli; };
-                RenderFixableItem("Brotli compression", compressionOk, fixCompression);
+                RenderFixableItem("Brotli 압축", compressionOk, fixCompression, "Project Settings - Player/WebGL - Publishing Settings - Compression Format");
             }
 
             if (typeof(PlayerSettings.WebGL).GetProperty("nameFilesAsHashes") != null)
             {
                 var nameAsHashesOk = PlayerSettings.WebGL.nameFilesAsHashes;
                 Action fixNameAsHashes = () => { PlayerSettings.WebGL.nameFilesAsHashes = true; };
-                RenderFixableItem("Name file as hashes", nameAsHashesOk, fixNameAsHashes);
+                RenderFixableItem("파일명 해시 지정", nameAsHashesOk, fixNameAsHashes,"Project Settings - Player/WebGL - Publishing Settings - Name Files As Hashes");
             }
 
             if (typeof(PlayerSettings.WebGL).GetProperty("exceptionSupport") != null)
             {
                 var exceptionsOk = PlayerSettings.WebGL.exceptionSupport == WebGLExceptionSupport.ExplicitlyThrownExceptionsOnly;
                 Action fixExceptions = () => { PlayerSettings.WebGL.exceptionSupport = WebGLExceptionSupport.ExplicitlyThrownExceptionsOnly; };
-                RenderFixableItem("Exception support", exceptionsOk, fixExceptions,
-                    "The \"Fix\" button sets exception support to \"Explicitly thrown exceptions only\". You can choose \"None\" in Player Settings for better performance, but first of all read about it on our developer documentation.");
+                RenderFixableItem("예외 지원", exceptionsOk, fixExceptions,
+                    "\"수정\" 버튼은 예외 지원을 \"명시적으로 던진 예외만\"으로 설정합니다. 플레이어 설정에서 \"없음\"을 선택하면 성능이 더 좋아지지만, 먼저 개발자 문서를 읽어보세요.\nProject Settings - Player/WebGL - Publishing Settings - Enable Exceptions");
             }
 
             if (typeof(PlayerSettings).GetProperty("stripEngineCode") != null)
             {
                 var stripEngineCodeOk = PlayerSettings.stripEngineCode;
                 Action fixStripEngineCode = () => { PlayerSettings.stripEngineCode = true; };
-                RenderFixableItem("Strip engine code", stripEngineCodeOk, fixStripEngineCode,
-                    "To decrease the bundle size even more, you can select Medium or High stripping from Player Settings, but first of all read about them on our developer documentation.");
+                RenderFixableItem("엔진 코드 제거", stripEngineCodeOk, fixStripEngineCode,
+                    "번들 크기를 더 줄이려면 플레이어 설정에서 중간 또는 높은 수준의 제거를 선택할 수 있지만, 먼저 개발자 문서를 읽어보세요.\nProject Settings - Player/WebGL - Other Settings - Optimization/Strip Engine Code");
             }
 
 
             if (UnityEngine.Rendering.GraphicsSettings.renderPipelineAsset != null)
             {
                 RenderInfoItem(
-                    "If you are using URP but don't use post-processing we recommend disabling them. This will reduce approximately 1mb from your final build size. Check our tips on the link below for more info.");
+                    "URP를 사용하고 있지만 포스트 프로세싱을 사용하지 않는다면, 이를 비활성화하는 것이 좋습니다. 이렇게 하면 최종 빌드 크기가 약 1MB 줄어듭니다. 아래 링크에서 더 자세한 정보를 확인하세요.");
             }
 
 #if UNITY_2021 || UNITY_2022
@@ -54,14 +54,14 @@ namespace CrazyGames.WindowComponents
             if (preloadedShadersCount > 0)
             {
                 RenderInfoItem(
-                    "Your project is preloading " + preloadedShadersCount + " shader(s). On WebGL, preloading shaders may considerably slow down the loading of the game.");
+                    "프로젝트에서 " + preloadedShadersCount + "개의 셰이더를 미리 로딩하고 있습니다. WebGL에서는 셰이더를 미리 로딩하면 게임 로딩이 상당히 느려질 수 있습니다.");
             }
 #endif
 
 
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            if (GUILayout.Button("Read more tips on our developer documentation"))
+            if (GUILayout.Button("개발자 문서에서 더 많은 팁을 확인하세요"))
             {
                 Application.OpenURL("https://developer.crazygames.com/unity-export-tips");
             }
@@ -127,7 +127,7 @@ namespace CrazyGames.WindowComponents
             GUILayout.Label(optionName, labelStyle);
             GUILayout.FlexibleSpace();
 
-            if (!ok && GUILayout.Button("Fix"))
+            if (!ok && GUILayout.Button("수정"))
             {
                 fixAction();
             }
@@ -171,7 +171,7 @@ namespace CrazyGames.WindowComponents
 
             EditorGUILayout.BeginHorizontal();
 
-            GUILayout.Label("INFO", infoStyle, GUILayout.Width(35));
+            GUILayout.Label("정보", infoStyle, GUILayout.Width(35));
 
             GUILayout.Label(info, labelStyle);
             GUILayout.FlexibleSpace();
