@@ -23,13 +23,13 @@ namespace CrazyGames.WindowComponents.ModelOptimizations
                 switch (MeshCompression)
                 {
                     case ModelImporterMeshCompression.Off:
-                        return "Off";
+                        return "압축 안함";
                     case ModelImporterMeshCompression.Low:
-                        return "Low";
+                        return "낮음";
                     case ModelImporterMeshCompression.Medium:
-                        return "Medium";
+                        return "일반";
                     case ModelImporterMeshCompression.High:
-                        return "High";
+                        return "높음";
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -43,13 +43,13 @@ namespace CrazyGames.WindowComponents.ModelOptimizations
                 switch (AnimationCompression)
                 {
                     case ModelImporterAnimationCompression.Off:
-                        return "Off";
+                        return "압축 안함";
                     case ModelImporterAnimationCompression.KeyframeReduction:
-                        return "KeyframeReduction";
+                        return "키프레임 감소";
                     case ModelImporterAnimationCompression.KeyframeReductionAndCompression:
-                        return "KeyframeReductionAndCompression";
+                        return "키프레임 감소 및 압축";
                     case ModelImporterAnimationCompression.Optimal:
-                        return "Optimal";
+                        return "최적";
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
