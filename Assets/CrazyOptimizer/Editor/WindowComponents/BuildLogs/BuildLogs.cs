@@ -115,7 +115,7 @@ namespace CrazyOptimizer.Editor.WindowComponents.BuildLogs
             }
             catch (Exception e)
             {
-                _errorMessage = "Failed to read Editor.log file, check console for more details.";
+                _errorMessage = "Editor.log 파일을 읽는 데 실패했습니다. 자세한 내용은 콘솔을 확인해주세요.";
                 Debug.LogError(e);
                 return;
             }
@@ -125,7 +125,7 @@ namespace CrazyOptimizer.Editor.WindowComponents.BuildLogs
             if (!buildReportStr.StartsWith("Uncompressed usage by category"))
             {
                 _errorMessage =
-                    "Failed to find Build Report in the Editor.log file. Please be sure the project was recently built on this machine. If the error persists, feel free to contact us.";
+                    "Editor.log 파일에서 빌드 리포트를 찾지 못했습니다. 이 컴퓨터에서 최근에 프로젝트를 빌드한 것이 확실한지 확인해 주세요. 만약 오류가 계속된다면 언제든지 저희에게 연락해주세요.";
                 return;
             }
 
