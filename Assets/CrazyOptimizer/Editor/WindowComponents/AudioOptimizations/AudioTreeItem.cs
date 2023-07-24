@@ -18,11 +18,11 @@ namespace CrazyGames.WindowComponents.AudioOptimizations
                 switch (_platformSettings.loadType)
                 {
                     case AudioClipLoadType.DecompressOnLoad:
-                        return "Decompress on load";
+                        return "로드 시 해제";
                     case AudioClipLoadType.CompressedInMemory:
-                        return "Compressed in memory";
+                        return "메모리 내 압축";
                     case AudioClipLoadType.Streaming:
-                        return "Streaming";
+                        return "스트리밍";
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
