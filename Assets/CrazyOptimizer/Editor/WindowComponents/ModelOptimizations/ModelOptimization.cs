@@ -26,8 +26,8 @@ namespace CrazyGames.WindowComponents.ModelOptimizations
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             EditorGUILayout.BeginVertical();
-            GUILayout.Label("Press \"Analyze models\" button to load the table.");
-            GUILayout.Label("Press it again when you need to refresh the data.");
+            GUILayout.Label("\"모델 분석\" 버튼을 눌러 테이블을 로드하세요.");
+            GUILayout.Label("데이터를 새로고침하려면 다시 누르세요.");
             EditorGUILayout.EndVertical();
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
@@ -39,14 +39,14 @@ namespace CrazyGames.WindowComponents.ModelOptimizations
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
 
-            if (GUILayout.Button(_isAnalyzing ? "Analyzing..." : "Analyze models", GUILayout.Width(200)))
+            if (GUILayout.Button(_isAnalyzing ? "분석 중..." : "모델 분석", GUILayout.Width(200)))
             {
                 AnalyzeModels();
             }
 
             var originalValue = EditorGUIUtility.labelWidth;
             EditorGUIUtility.labelWidth = 160;
-            _includeFilesFromPackages = EditorGUILayout.Toggle("Include files from Packages", _includeFilesFromPackages);
+            _includeFilesFromPackages = EditorGUILayout.Toggle("패키지의 파일 포함", _includeFilesFromPackages);
             EditorGUIUtility.labelWidth = originalValue;
             GUILayout.FlexibleSpace();
 
@@ -54,19 +54,19 @@ namespace CrazyGames.WindowComponents.ModelOptimizations
             EditorGUILayout.Space(5);
 
             GUILayout.Label(
-                "This utility gives you an overview of the models used in your project. By optimizing various settings, you will be able to considerably decrease your final build size. You can click on a model to select it in the Project view. To find out more about how the tool finds the models, please check our GitHub repo.",
+                "이 도구는 프로젝트에서 사용하는 모델의 개요를 제공합니다. 여러 설정을 최적화하면 최종 빌드 크기를 크게 줄일 수 있습니다. 모델을 선택하려면 클릭하세요. 도구가 모델을 찾는 방법에 대해 자세히 알아보려면 GitHub 리포지토리를 확인하세요.",
                 EditorStyles.wordWrappedLabel);
 
-            BuildExplanation("R/W enabled",
-                "When a Mesh is read/write enabled, Unity uploads the Mesh data to GPU-addressable memory, but also keeps it in CPU-addressable memory. In most cases, you should disable this option to save runtime memory usage.");
-            BuildExplanation("Polygons optimized",
-                "Optimize the order of polygons in the mesh to make better use of the GPUs internal caches to improve rendering performance.");
-            BuildExplanation("Vertices optimized",
-                "Optimize the order of vertices in the mesh to make better use of the GPUs internal caches to improve rendering performance.");
-            BuildExplanation("Mesh compression",
-                "Compressing meshes will decrease the final build size, but more compression introduces more artifacts in vertex data.");
-            BuildExplanation("Animation compression",
-                "Compressing animations will decrease the final build size, but more compression introduces more artifacts in the animations.");
+            BuildExplanation("R/W 활성화",
+                "메쉬가 읽기/쓰기 가능한 경우, Unity는 메쉬 데이터를 GPU 주소 가능 메모리에 업로드하지만 CPU 주소 가능 메모리에도 유지합니다. 대부분의 경우 이 옵션을 비활성화하여 런타임 메모리 사용량을 줄이는 것이 좋습니다.");
+            BuildExplanation("폴리곤 최적화",
+                "GPU 내부 캐시를 더 잘 활용하여 렌더링 성능을 향상시키기 위해 메쉬 내 다각형의 순서를 최적화합니다.");
+            BuildExplanation("정점 최적화",
+                "GPU 내부 캐시를 더 잘 활용하여 렌더링 성능을 향상시키기 위해 메쉬 내 정점의 순서를 최적화합니다.");
+            BuildExplanation("메시 압축",
+                "메쉬를 압축하면 최종 빌드 크기가 줄어들지만, 압축이 많아질수록 정점 데이터에서 아티팩트가 더 많이 발생합니다.");
+            BuildExplanation("애니메이션 압축",
+                "애니메이션을 압축하면 최종 빌드 크기가 줄어들지만, 압축이 많아질수록 애니메이션에서 아티팩트가 더 많이 발생합니다.");
         }
 
         static void BuildExplanation(string label, string explanation)
@@ -197,17 +197,17 @@ namespace CrazyGames.WindowComponents.ModelOptimizations
                 _multiColumnHeaderState = new MultiColumnHeaderState(new[]
                 {
                     // when adding a new column don't forget to check the sorting method, and the CellGUI method
-                    new MultiColumnHeaderState.Column() { headerContent = new GUIContent() { text = "Model" }, width = 150, minWidth = 150, canSort = true },
+                    new MultiColumnHeaderState.Column() { headerContent = new GUIContent() { text = "모델" }, width = 150, minWidth = 150, canSort = true },
                     new MultiColumnHeaderState.Column()
-                        { headerContent = new GUIContent() { text = "R/W enabled" }, width = 80, minWidth = 80, canSort = true },
+                        { headerContent = new GUIContent() { text = "R/W 활성화" }, width = 80, minWidth = 80, canSort = true },
                     new MultiColumnHeaderState.Column()
-                        { headerContent = new GUIContent() { text = "Polygons optimized" }, width = 120, minWidth = 120, canSort = true },
+                        { headerContent = new GUIContent() { text = "폴리곤 최적화" }, width = 120, minWidth = 120, canSort = true },
                     new MultiColumnHeaderState.Column()
-                        { headerContent = new GUIContent() { text = "Vertices optimized" }, width = 120, minWidth = 120, canSort = true },
+                        { headerContent = new GUIContent() { text = "정점 최적화" }, width = 120, minWidth = 120, canSort = true },
                     new MultiColumnHeaderState.Column()
-                        { headerContent = new GUIContent() { text = "Mesh compression" }, width = 120, minWidth = 120, canSort = true },
+                        { headerContent = new GUIContent() { text = "메시 압축" }, width = 120, minWidth = 120, canSort = true },
                     new MultiColumnHeaderState.Column()
-                        { headerContent = new GUIContent() { text = "Animation compression" }, width = 140, minWidth = 140, canSort = true },
+                        { headerContent = new GUIContent() { text = "애니메이션 압축" }, width = 140, minWidth = 140, canSort = true },
                 });
 
             _modelTree = new ModelTree(treeViewState, new MultiColumnHeader(_multiColumnHeaderState), treeModel);
