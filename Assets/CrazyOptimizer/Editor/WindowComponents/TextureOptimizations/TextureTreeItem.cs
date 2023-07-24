@@ -24,13 +24,13 @@ namespace CrazyGames.WindowComponents.TextureOptimizations
                 switch (TextureCompression)
                 {
                     case TextureImporterCompression.Uncompressed:
-                        return "Uncompressed";
+                        return "압축 안함";
                     case TextureImporterCompression.Compressed:
-                        return "Normal";
+                        return "보통";
                     case TextureImporterCompression.CompressedHQ:
-                        return "High";
+                        return "높음";
                     case TextureImporterCompression.CompressedLQ:
-                        return "Low";
+                        return "낮음";
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
