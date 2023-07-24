@@ -29,8 +29,8 @@ namespace CrazyOptimizer.Editor.WindowComponents.BuildLogs
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             EditorGUILayout.BeginVertical();
-            GUILayout.Label("Press \"Analyze build logs\" button, but be sure the project was built at least once on this machine.");
-            GUILayout.Label("Press it again when you need to refresh the data.");
+            GUILayout.Label("\"빌드 로그 분석\" 버튼을 클릭하십시오. 그러나 이 컴퓨터에서 최소한 한 번은 프로젝트를 빌드했어야 합니다.");
+            GUILayout.Label("데이터를 새로 고칠 때 다시 누르십시오.");
             EditorGUILayout.EndVertical();
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
@@ -41,17 +41,17 @@ namespace CrazyOptimizer.Editor.WindowComponents.BuildLogs
             EditorGUILayout.Space(5);
 
             EditorGUILayout.BeginHorizontal();
-            if (GUILayout.Button(_isAnalyzing ? "Analyzing..." : "Analyze build logs", GUILayout.Width(200)))
+            if (GUILayout.Button(_isAnalyzing ? "분석 중..." : "빌드 로그 분석", GUILayout.Width(200)))
             {
                 AnalyzeBuildLogs();
             }
 
             var originalValue = EditorGUIUtility.labelWidth;
             EditorGUIUtility.labelWidth = 160;
-            _includeFilesFromPackages = EditorGUILayout.Toggle("Include files from Packages", _includeFilesFromPackages);
+            _includeFilesFromPackages = EditorGUILayout.Toggle("패키지의 파일 포함", _includeFilesFromPackages);
             EditorGUIUtility.labelWidth = originalValue;
             GUILayout.FlexibleSpace();
-            if (GUILayout.Button("Open Editor.log", GUILayout.Width(200)))
+            if (GUILayout.Button("Editor.log 열기", GUILayout.Width(200)))
             {
                 Process.Start("notepad.exe", GetEditorLogPath());
             }
@@ -73,7 +73,7 @@ namespace CrazyOptimizer.Editor.WindowComponents.BuildLogs
             EditorGUILayout.Space(5);
 
             GUILayout.Label(
-                "This utility analyzes the Build Report from the Editor.log file. It will display all the files included in your final build, and the memory they occupy. You can use this utility to detect more opportunities to decrease the final build size. There may be textures that still occupy a lot of memory, uncompressed sounds, or stuff forgotten in the Resources folders that gets included in the build.",
+                "이 도구는 Editor.log 파일의 빌드 리포트를 분석합니다. 이는 최종 빌드에 포함된 모든 파일과 그들이 차지하는 메모리를 보여줍니다. 이 도구를 사용하면 최종 빌드 크기를 줄일 수 있는 더 많은 기회를 발견할 수 있습니다. 여전히 많은 메모리를 차지하는 텍스처, 압축되지 않은 소리 또는 빌드에 포함된 리소스 폴더에 잊혀진 항목이 있을 수 있습니다.",
                 EditorStyles.wordWrappedLabel);
         }
 
@@ -174,9 +174,9 @@ namespace CrazyOptimizer.Editor.WindowComponents.BuildLogs
             _multiColumnHeaderState = _multiColumnHeaderState ?? new MultiColumnHeaderState(new[]
             {
                 // when adding a new column don't forget to check the sorting method, and the CellGUI method
-                new MultiColumnHeaderState.Column() {headerContent = new GUIContent() {text = "Size"}, width = 80, minWidth = 60, canSort = true},
-                new MultiColumnHeaderState.Column() {headerContent = new GUIContent() {text = "Size %"}, width = 60, minWidth = 40, canSort = true},
-                new MultiColumnHeaderState.Column() {headerContent = new GUIContent() {text = "Path"}, width = 300, minWidth = 200, canSort = true},
+                new MultiColumnHeaderState.Column() {headerContent = new GUIContent() {text = "사이즈"}, width = 80, minWidth = 60, canSort = true},
+                new MultiColumnHeaderState.Column() {headerContent = new GUIContent() {text = "사이즈 %"}, width = 60, minWidth = 40, canSort = true},
+                new MultiColumnHeaderState.Column() {headerContent = new GUIContent() {text = "경로"}, width = 300, minWidth = 200, canSort = true},
             });
             _buildLogTree = new BuildLogTree(treeViewState, new MultiColumnHeader(_multiColumnHeaderState), treeModel);
             _isAnalyzing = false;
