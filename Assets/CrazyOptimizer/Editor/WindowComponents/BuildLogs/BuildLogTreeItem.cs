@@ -23,7 +23,7 @@ namespace CrazyOptimizer.Editor.WindowComponents.BuildLogs
                     case "mb":
                         return size * 1024 * 1024;
                     default:
-                        throw new Exception("Unknown size unit " + sizeUnit);
+                        throw new Exception("알 수 없는 크기 단위 " + sizeUnit);
                 }
             }
         }
