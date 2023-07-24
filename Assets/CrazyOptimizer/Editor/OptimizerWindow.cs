@@ -12,7 +12,7 @@ namespace CrazyGames
     public class OptimizerWindow : EditorWindow
     {
         private int _toolbarInt = 0;
-        private readonly string[] _toolbarStrings = { "Export", "Textures", "Models", "Audio clips", "Build logs", "About" };
+        private readonly string[] _toolbarStrings = { "내보내기(빌드)", "텍스처", "모델", "오디오", "빌드 로그", "정보" };
         public static EditorWindow EditorWindowInstance;
 
         [MenuItem("Tools/WebGL Optimizer")]
@@ -67,13 +67,13 @@ namespace CrazyGames
             GUILayout.Box(banner, GUILayout.Height(45));
 
             EditorGUILayout.BeginVertical();
-            GUILayout.Label("Maintained by volunteers and CrazyGames.", EditorStyles.miniLabel);
-            GUILayout.Label("We can make your game popular on the Web!", EditorStyles.miniLabel);
+            GUILayout.Label("자원봉사자들과 CrazyGames에 의해 유지보수되고 있습니다.", EditorStyles.miniLabel);
+            GUILayout.Label("우리는 당신의 게임을 웹에서 인기 있게 만들 수 있습니다!", EditorStyles.miniLabel);
             EditorGUILayout.BeginHorizontal();
             if (GUILayout.Button("GitHub"))
                 Application.OpenURL("https://github.com/CrazyGamesCom/unity-optimizations-package");
             GUILayout.Label("|");
-            if (GUILayout.Button("Submit game on CrazyGames"))
+            if (GUILayout.Button("CrazyGames에 게임 제출하기"))
                 Application.OpenURL("https://developer.crazygames.com/");
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
