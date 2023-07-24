@@ -12,7 +12,7 @@ namespace CrazyGames
     public class OptimizerWindow : EditorWindow
     {
         private int _toolbarInt = 0;
-        private readonly string[] _toolbarStrings = { "내보내기(빌드)", "텍스처", "모델", "오디오", "빌드 로그", "정보" };
+        private readonly string[] _toolbarStrings = { "내보내기(빌드)", "텍스처", "모델", "오디오 클립", "빌드 로그", "정보" };
         public static EditorWindow EditorWindowInstance;
 
         [MenuItem("Tools/WebGL Optimizer")]
