@@ -24,8 +24,8 @@ namespace CrazyGames.WindowComponents.AudioOptimizations
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             EditorGUILayout.BeginVertical();
-            GUILayout.Label("Press \"Analyze audio\" button to load the table.");
-            GUILayout.Label("Press it again when you need to refresh the data.");
+            GUILayout.Label("\"오디오 분석\" 버튼을 눌러 테이블을 불러옵니다.");
+            GUILayout.Label("데이터를 새로 고칠 때 이 버튼을 누르세요.");
             EditorGUILayout.EndVertical();
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
@@ -36,14 +36,14 @@ namespace CrazyGames.WindowComponents.AudioOptimizations
             EditorGUILayout.Space(5);
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            if (GUILayout.Button(_isAnalyzing ? "Analyzing..." : "Analyze audio", GUILayout.Width(200)))
+            if (GUILayout.Button(_isAnalyzing ? "분석 중..." : "오디오 분석", GUILayout.Width(200)))
             {
                 AnalyzeAudio();
             }
 
             var originalValue = EditorGUIUtility.labelWidth;
             EditorGUIUtility.labelWidth = 160;
-            _includeFilesFromPackages = EditorGUILayout.Toggle("Include files from Packages", _includeFilesFromPackages);
+            _includeFilesFromPackages = EditorGUILayout.Toggle("패키지의 파일 포함", _includeFilesFromPackages);
             EditorGUIUtility.labelWidth = originalValue;
             GUILayout.FlexibleSpace();
 
@@ -51,14 +51,14 @@ namespace CrazyGames.WindowComponents.AudioOptimizations
             EditorGUILayout.Space(5);
 
             GUILayout.Label(
-                "This utility gives you an overview of the audio clips used in your project. By optimizing various settings, you will be able to considerably decrease your final build size and runtime memory usage. You can click on an audio clip to select it in the Project view. To find out more about how the tool finds the audio clips, please check our GitHub repo.",
+                "이 유틸리티는 프로젝트에서 사용된 오디오 클립의 개요를 제공합니다. 다양한 설정을 최적화함으로써 최종 빌드 크기와 런타임 메모리 사용을 크게 줄일 수 있습니다. 프로젝트 뷰에서 오디오 클립을 선택하려면 클릭하십시오. 이 도구가 오디오 클립을 찾는 방법에 대해 더 알아보려면 GitHub 리포지토리를 확인해 주세요.",
                 EditorStyles.wordWrappedLabel);
 
 
-            BuildExplanation("Load type",
-                "The default option, Decompress On Load, is good for audio clips that require precision when played, for example, audio effects or dialogues. For background audio clips Compressed In Memory is recommended, since it reduces the runtime memory, though audio playback is less precise and may introduce latency.");
-            BuildExplanation("Quality",
-                "Lowering the quality will reduce the build size. You can experiment with a lower audio quality for background audio.");
+            BuildExplanation("로드 타입",
+                "기본 옵션인 Decompress On Load는 오디오 효과나 대화와 같이 재생 시 정밀성이 필요한 오디오 클립에 좋습니다. 백그라운드 오디오 클립의 경우 Compressed In Memory가 권장되며, 이는 런타임 메모리를 줄이지만 오디오 재생이 덜 정확하며 지연 시간을 초래할 수 있습니다.");
+            BuildExplanation("품질",
+                "품질을 낮추면 빌드 크기를 줄일 수 있습니다. 백그라운드 오디오에 대해 오디오 품질을 낮춰보는 것을 시도해보세요.");
         }
 
         static void BuildExplanation(string label, string explanation)
@@ -180,10 +180,10 @@ namespace CrazyGames.WindowComponents.AudioOptimizations
                 {
                     // when adding a new column don't forget to check the sorting method, and the CellGUI method
                     new MultiColumnHeaderState.Column()
-                        { headerContent = new GUIContent() { text = "Audio clip" }, width = 150, minWidth = 150, canSort = true },
+                        { headerContent = new GUIContent() { text = "오디오 클립" }, width = 150, minWidth = 150, canSort = true },
                     new MultiColumnHeaderState.Column()
-                        { headerContent = new GUIContent() { text = "Load type" }, width = 150, minWidth = 150, canSort = true },
-                    new MultiColumnHeaderState.Column() { headerContent = new GUIContent() { text = "Quality" }, width = 60, minWidth = 60, canSort = true },
+                        { headerContent = new GUIContent() { text = "로드 타입" }, width = 150, minWidth = 150, canSort = true },
+                    new MultiColumnHeaderState.Column() { headerContent = new GUIContent() { text = "품질" }, width = 60, minWidth = 60, canSort = true },
                 });
             _audioCompressionTree = new AudioTree(treeViewState, new MultiColumnHeader(_multiColumnHeaderState), treeModel);
             _isAnalyzing = false;
