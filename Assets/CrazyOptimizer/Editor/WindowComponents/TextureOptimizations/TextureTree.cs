@@ -137,7 +137,7 @@ namespace CrazyGames.WindowComponents.TextureOptimizations
                     GUI.Label(cellRect, item.data.TextureCompressionName);
                     break;
                 case 4:
-                    GUI.Label(cellRect, item.data.HasCrunchCompression ? "yes" : "no");
+                    GUI.Label(cellRect, item.data.HasCrunchCompression ? "O" : "X");
                     break;
                 case 5:
                     GUI.Label(cellRect, item.data.CrunchCompressionQuality.ToString());
