@@ -11,7 +11,7 @@ namespace CrazyGames.WindowComponents
             GUILayout.FlexibleSpace();
 
             GUILayout.Label(
-                "The purpose of this package is to help you optimize your game by reducing the build size and increasing the performance. At the moment, it is targeted at WebGL games.",
+                "이 패키지의 목적은 빌드 크기를 줄이고 성능을 향상시킴으로써 게임 최적화를 도와주는 것입니다. 현재는 WebGL 게임에 대상으로 하고 있습니다.",
                 EditorStyles.wordWrappedLabel);
 
             GUILayout.FlexibleSpace();
